@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Data</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<div class="container">
+  <h2>Data from Database</h2>
+  <div th:utext="${data}"></div>
+  <button onclick="location.href='/home'">Back to Home</button>
+</div>
+</body>
+</html>

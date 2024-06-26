@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Customers</title>
+</head>
+<body>
+<h1>Customer List</h1>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="customer : ${customers.content}">
+    <td th:text="${customer.id}"></td>
+    <td th:text="${customer.name}"></td>
+    <td>
+      <a th:href="@{/customers/{id}(id=${customer.id})}">View</a>
+      <a th:href="@{/customers/delete/{id}(id=${customer.id})}">Delete</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<div>
+  <a th:href="@{/customers/new}">Create New Customer</a>
+</div>
+<div>
+  <span th:text="'Page: ' + ${customers.number + 1} + ' of ' + ${customers.totalPages}"></span>
+  <a th:href="@{/customers(page=0, size=${customers.size})}">First</a>
+  <a th:href="@{/customers(page=${customers.number - 1}, size=${customers.size})}" th:if="${customers.hasPrevious()}">Previous</a>
+  <a th:href="@{/customers(page=${customers.number + 1}, size=${customers.size})}" th:if="${customers.hasNext()}">Next</a>
+  <a th:href="@{/customers(page=${customers.totalPages - 1}, size=${customers.size})}">Last</a>
+</div>
+</body>
+</html>

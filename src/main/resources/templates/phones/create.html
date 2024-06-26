@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Create Phone</title>
+</head>
+<body>
+<h1>Create Phone</h1>
+<form th:action="@{/phones}" th:object="${phone}" method="post">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" th:field="*{name}" required>
+  </div>
+  <div>
+    <label for="brand">Brand:</label>
+    <select id="brand" th:field="*{brand}" required>
+      <option th:each="brand : ${brands}" th:value="${brand}" th:text="${brand.name}"></option>
+    </select>
+  </div>
+  <div>
+    <label for="model">Model:</label>
+    <select id="model" th:field="*{model}" required>
+      <option th:each="model : ${models}" th:value="${model}" th:text="${model.name}"></option>
+    </select>
+  </div>
+  <div>
+    <button type="submit">Save</button>
+  </div>
+</form>
+<div>
+  <a th:href="@{/phones}">Back to List</a>
+</div>
+</body>
+</html>

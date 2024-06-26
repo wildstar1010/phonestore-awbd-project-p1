@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Rental Details</title>
+</head>
+<body>
+<h1>Rental Details</h1>
+<div>
+  <label>ID:</label>
+  <span th:text="${rental.id}"></span>
+</div>
+<div>
+  <label>Customer:</label>
+  <span th:text="${rental.customer.name}"></span>
+</div>
+<div>
+  <label>Phone:</label>
+  <span th:text="${rental.phone.name}"></span>
+</div>
+<div>
+  <label>Employee:</label>
+  <span th:text="${rental.employee.name}"></span>
+</div>
+<div>
+  <a th:href="@{/rentals}">Back to List</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Create Brand</title>
+</head>
+<body>
+<h1>Create Brand</h1>
+<form th:action="@{/brands}" th:object="${brand}" method="post">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" th:field="*{name}" required>
+  </div>
+  <div>
+    <button type="submit">Save</button>
+  </div>
+</form>
+<div>
+  <a th:href="@{/brands}">Back to List</a>
+</div>
+</body>
+</html>

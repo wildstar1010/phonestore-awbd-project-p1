@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Order Details</title>
+</head>
+<body>
+<h1>Order Details</h1>
+<div>
+  <label>ID:</label>
+  <span th:text="${order.id}"></span>
+</div>
+<div>
+  <label>Customer:</label>
+  <span th:text="${order.customer.name}"></span>
+</div>
+<div>
+  <label>Phone:</label>
+  <span th:text="${order.phone.name}"></span>
+</div>
+<div>
+  <label>Employee:</label>
+  <span th:text="${order.employee.name}"></span>
+</div>
+<div>
+  <a th:href="@{/orders}">Back to List</a>
+</div>
+</body>
+</html>

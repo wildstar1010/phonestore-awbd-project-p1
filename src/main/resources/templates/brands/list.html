@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Brands</title>
+</head>
+<body>
+<h1>Brand List</h1>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="brand : ${brands.content}">
+    <td th:text="${brand.id}"></td>
+    <td th:text="${brand.name}"></td>
+    <td>
+      <a th:href="@{/brands/{id}(id=${brand.id})}">View</a>
+      <a th:href="@{/brands/delete/{id}(id=${brand.id})}">Delete</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<div>
+  <a th:href="@{/brands/new}">Create New Brand</a>
+</div>
+<div>
+  <span th:text="'Page: ' + ${brands.number + 1} + ' of ' + ${brands.totalPages}"></span>
+  <a th:href="@{/brands(page=0, size=${brands.size})}">First</a>
+  <a th:href="@{/brands(page=${brands.number - 1}, size=${brands.size})}" th:if="${brands.hasPrevious()}">Previous</a>
+  <a th:href="@{/brands(page=${brands.number + 1}, size=${brands.size})}" th:if="${brands.hasNext()}">Next</a>
+  <a th:href="@{/brands(page=${brands.totalPages - 1}, size=${brands.size})}">Last</a>
+</div>
+</body>
+</html>

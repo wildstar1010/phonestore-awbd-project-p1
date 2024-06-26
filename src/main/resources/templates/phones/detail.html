@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Phone Details</title>
+</head>
+<body>
+<h1>Phone Details</h1>
+<div>
+  <label>ID:</label>
+  <span th:text="${phone.id}"></span>
+</div>
+<div>
+  <label>Name:</label>
+  <span th:text="${phone.name}"></span>
+</div>
+<div>
+  <label>Brand:</label>
+  <span th:text="${phone.brand.name}"></span>
+</div>
+<div>
+  <label>Model:</label>
+  <span th:text="${phone.model.name}"></span>
+</div>
+<div>
+  <a th:href="@{/phones}">Back to List</a>
+</div>
+</body>
+</html>

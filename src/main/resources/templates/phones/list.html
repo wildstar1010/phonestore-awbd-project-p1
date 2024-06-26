@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Phones</title>
+</head>
+<body>
+<h1>Phone List</h1>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Brand</th>
+    <th>Model</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="phone : ${phones.content}">
+    <td th:text="${phone.id}"></td>
+    <td th:text="${phone.name}"></td>
+    <td th:text="${phone.brand.name}"></td>
+    <td th:text="${phone.model.name}"></td>
+    <td>
+      <a th:href="@{/phones/{id}(id=${phone.id})}">View</a>
+      <a th:href="@{/phones/delete/{id}(id=${phone.id})}">Delete</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<div>
+  <a th:href="@{/phones/new}">Create New Phone</a>
+</div>
+<div>
+  <span th:text="'Page: ' + ${phones.number + 1} + ' of ' + ${phones.totalPages}"></span>
+  <a th:href="@{/phones(page=0, size=${phones.size})}">First</a>
+  <a th:href="@{/phones(page=${phones.number - 1}, size=${phones.size})}" th:if="${phones.hasPrevious()}">Previous</a>
+  <a th:href="@{/phones(page=${phones.number + 1}, size=${phones.size})}" th:if="${phones.hasNext()}">Next</a>
+  <a th:href="@{/phones(page=${phones.totalPages - 1}, size=${phones.size})}">Last</a>
+</div>
+</body>
+</html>
