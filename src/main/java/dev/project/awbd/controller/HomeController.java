@@ -6,11 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+
 import java.util.List;
 
 @Controller
-@RequestMapping("/home")
 public class HomeController {
 
     @Autowired
@@ -40,40 +39,25 @@ public class HomeController {
     @Autowired
     private StoreRepository storeRepository;
 
-    @GetMapping
+    @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("message", "Index Page");
-        return "index";  // Corresponds to index.html
-    }
-
-    @GetMapping("/login")
-    public String login(Model model) {
-        model.addAttribute("message", "Login Page");
-        return "login";  // Corresponds to login.html
-    }
-
-    @GetMapping("/error")
-    public String errorPage(Model model) {
-        model.addAttribute("message", "An error occurred");
-        return "error";  // Corresponds to error.html
+        model.addAttribute("message", "Welcome to the Home Page!");
+        return "home";  // Corresponds to home.html
     }
 
     @GetMapping("/h2-console")
     public String h2Console() {
-        // Returning the error page for now
-        return "error";
+        return "error";  // Return error page for now
     }
 
     @GetMapping("/connect-mysql")
     public String connectMysql() {
-        // Returning the error page for now
-        return "error";
+        return "error";  // Return error page for now
     }
 
     @GetMapping("/view-data")
     public String viewData() {
-        // Returning the error page for now
-        return "error";
+        return "error";  // Return error page for now
     }
 
     @GetMapping("/data")

@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Home</title>
-  <link rel="stylesheet" th:href="@{/css/styles.css}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 <body>
 <div class="container">
-  <h2>Welcome!</h2>
-  <div class="buttons">
-    <button onclick="location.href='/h2-console'">H2 Console</button>
-    <button onclick="location.href='/connect-mysql'">Connect to MySQL</button>
-    <button onclick="location.href='/view-data'">View Data</button>
+  <img src="/static/images/logo.png" alt="Logo" class="logo">
+  <h2>Welcome to the Home Page!</h2>
+  <div>
+    <button onclick="location.href='/login'">Login</button>
+    <button onclick="location.href='/register'">Register</button>
+    <button onclick="location.href='/stores'">Store</button>
   </div>
 </div>
 </body>
