@@ -2,22 +2,40 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Customer Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      padding: 20px;
+    }
+    label {
+      font-weight: bold;
+    }
+    span {
+      margin-left: 10px;
+    }
+    a {
+      display: block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: blue;
+    }
+  </style>
 </head>
 <body>
-<h1>Customer Details</h1>
-<div>
-  <label>ID:</label>
-  <span th:text="${customer.id}"></span>
-</div>
-<div>
-  <label>Name:</label>
-  <span th:text="${customer.name}"></span>
-</div>
-<div>
+<div class="container">
+  <h1>Customer Details</h1>
+  <div>
+    <label>ID:</label>
+    <span th:text="${customer.id}"></span>
+  </div>
+  <div>
+    <label>Name:</label>
+    <span th:text="${customer.name}"></span>
+  </div>
   <a th:href="@{/customers}">Back to List</a>
-</div>
-</body>
-```html
+  <button onclick="location.href='/home'">Back to Home</button>
 </div>
 </body>
 </html>

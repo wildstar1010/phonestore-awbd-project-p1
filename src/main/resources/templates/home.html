@@ -4,16 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home Page</title>
-  <link rel="stylesheet" href="/static/css/styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      text-align: center;
+      padding: 20px;
+    }
+    .logo {
+      width: 100px;
+      height: auto;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
 </head>
 <body>
 <div class="container">
-  <img src="/static/images/logo.png" alt="Logo" class="logo">
-  <h2>Welcome to the Home Page!</h2>
+  <img src="/images/logo.png" alt="Logo" class="logo">
+  <h2>Welcome to PhoneStore!</h2>
+  <h2>AWBD P1 Project</h2>
+  <h3>Dragomir Gabriel Bogdan - BDTS(IFR)</h3>
   <div>
     <button onclick="location.href='/login'">Login</button>
     <button onclick="location.href='/register'">Register</button>
     <button onclick="location.href='/stores'">Store</button>
+    <button onclick="location.href='/rentals'">Rentals</button>
+    <button onclick="location.href='/phones'">Phones</button>
+    <button onclick="location.href='/orders'">Orders</button>
+    <button onclick="location.href='/models'">Models</button>
+    <button onclick="location.href='/customers'">Customers</button>
+    <button onclick="location.href='/brands'">Brands</button>
   </div>
 </div>
 </body>

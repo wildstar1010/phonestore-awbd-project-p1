@@ -2,27 +2,48 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Rental Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      padding: 20px;
+    }
+    label {
+      font-weight: bold;
+    }
+    span {
+      margin-left: 10px;
+    }
+    a {
+      display: block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: blue;
+    }
+  </style>
 </head>
 <body>
-<h1>Rental Details</h1>
-<div>
-  <label>ID:</label>
-  <span th:text="${rental.id}"></span>
-</div>
-<div>
-  <label>Customer:</label>
-  <span th:text="${rental.customer.name}"></span>
-</div>
-<div>
-  <label>Phone:</label>
-  <span th:text="${rental.phone.name}"></span>
-</div>
-<div>
-  <label>Employee:</label>
-  <span th:text="${rental.employee.name}"></span>
-</div>
-<div>
+<div class="container">
+  <h1>Rental Details</h1>
+  <div>
+    <label>ID:</label>
+    <span th:text="${rental.id}"></span>
+  </div>
+  <div>
+    <label>Customer:</label>
+    <span th:text="${rental.customer.name}"></span>
+  </div>
+  <div>
+    <label>Phone:</label>
+    <span th:text="${rental.phone.name}"></span>
+  </div>
+  <div>
+    <label>Employee:</label>
+    <span th:text="${rental.employee.name}"></span>
+  </div>
   <a th:href="@{/rentals}">Back to List</a>
+  <button onclick="location.href='/home'">Back to Home</button>
 </div>
 </body>
 </html>

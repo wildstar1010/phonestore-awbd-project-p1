@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Rental</title>
+    <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      padding: 20px;
+    }
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    div {
+      margin-bottom: 10px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 10px 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .back-link {
+      margin-top: 20px;
+      display: block;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+    <h1>Create Rental</h1>
+    <form th:action="@{/rentals}" th:object="${rental}" method="post">
+        <div>
+            <label for="customer">Customer:</label>
+            <select id="customer" th:field="*{customer}" required>
+                <option th:each="customer : ${customers}" th:value="${customer}" th:text="${customer.name}"></option>
+            </select>
+        </div>
+        <div>
+            <label for="phone">Phone:</label>
+            <select id="phone" th:field="*{phone}" required>
+                <option th:each="phone : ${phones}" th:value="${phone}" th:text="${phone.name}"></option>
+            </select>
+        </div>
+        <div>
+            <label for="employee">Employee:</label>
+            <select id="employee" th:field="*{employee}" required>
+                <option th:each="employee : ${employees}" th:value="${employee}" th:text="${employee.name}"></option>
+            </select>
+        </div>
+        <div>
+            <button type="submit">Save</button>
+        </div>
+    </form>
+    <div>
+        <a class="back-link" th:href="@{/rentals}">Back to List</a>
+    </div>
+    <button onclick="location.href='/home'">Back to Home</button>
+</div>
+</body>
+</html>

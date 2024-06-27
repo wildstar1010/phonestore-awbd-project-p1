@@ -2,34 +2,64 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Create Order</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      padding: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+    a {
+      display: block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: blue;
+    }
+  </style>
 </head>
 <body>
-<h1>Create Order</h1>
-<form th:action="@{/orders}" th:object="${order}" method="post">
-  <div>
-    <label for="customer">Customer:</label>
-    <select id="customer" th:field="*{customer}" required>
-      <option th:each="customer : ${customers}" th:value="${customer}" th:text="${customer.name}"></option>
-    </select>
-  </div>
-  <div>
-    <label for="phone">Phone:</label>
-    <select id="phone" th:field="*{phone}" required>
-      <option th:each="phone : ${phones}" th:value="${phone}" th:text="${phone.name}"></option>
-    </select>
-  </div>
-  <div>
-    <label for="employee">Employee:</label>
-    <select id="employee" th:field="*{employee}" required>
-      <option th:each="employee : ${employees}" th:value="${employee}" th:text="${employee.name}"></option>
-    </select>
-  </div>
-  <div>
-    <button type="submit">Save</button>
-  </div>
-</form>
-<div>
+<div class="container">
+  <h1>Create Order</h1>
+  <form th:action="@{/orders}" th:object="${order}" method="post">
+    <div>
+      <label for="customer">Customer:</label>
+      <select id="customer" th:field="*{customer}" required>
+        <option th:each="customer : ${customers}" th:value="${customer}" th:text="${customer.name}"></option>
+      </select>
+    </div>
+    <div>
+      <label for="phone">Phone:</label>
+      <select id="phone" th:field="*{phone}" required>
+        <option th:each="phone : ${phones}" th:value="${phone}" th:text="${phone.name}"></option>
+      </select>
+    </div>
+    <div>
+      <label for="employee">Employee:</label>
+      <select id="employee" th:field="*{employee}" required>
+        <option th:each="employee : ${employees}" th:value="${employee}" th:text="${employee.name}"></option>
+      </select>
+    </div>
+    <div>
+      <button type="submit">Save</button>
+    </div>
+  </form>
   <a th:href="@{/orders}">Back to List</a>
+  <button onclick="location.href='/home'">Back to Home</button>
 </div>
 </body>
 </html>

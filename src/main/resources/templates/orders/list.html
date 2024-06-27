@@ -2,41 +2,71 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Orders</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      padding: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    a {
+      text-decoration: none;
+      color: blue;
+    }
+    .pagination {
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-<h1>Order List</h1>
-<table>
-  <thead>
-  <tr>
-    <th>ID</th>
-    <th>Customer</th>
-    <th>Phone</th>
-    <th>Employee</th>
-    <th>Actions</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr th:each="order : ${orders.content}">
-    <td th:text="${order.id}"></td>
-    <td th:text="${order.customer.name}"></td>
-    <td th:text="${order.phone.name}"></td>
-    <td th:text="${order.employee.name}"></td>
-    <td>
-      <a th:href="@{/orders/{id}(id=${order.id})}">View</a>
-      <a th:href="@{/orders/delete/{id}(id=${order.id})}">Delete</a>
-    </td>
-  </tr>
-  </tbody>
-</table>
-<div>
-  <a th:href="@{/orders/new}">Create New Order</a>
-</div>
-<div>
-  <span th:text="'Page: ' + ${orders.number + 1} + ' of ' + ${orders.totalPages}"></span>
-  <a th:href="@{/orders(page=0, size=${orders.size})}">First</a>
-  <a th:href="@{/orders(page=${orders.number - 1}, size=${orders.size})}" th:if="${orders.hasPrevious()}">Previous</a>
-  <a th:href="@{/orders(page=${orders.number + 1}, size=${orders.size})}" th:if="${orders.hasNext()}">Next</a>
-  <a th:href="@{/orders(page=${orders.totalPages - 1}, size=${orders.size})}">Last</a>
+<div class="container">
+  <h1>Order List</h1>
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Customer</th>
+      <th>Phone</th>
+      <th>Employee</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="order : ${orders.content}">
+      <td th:text="${order.id}"></td>
+      <td th:text="${order.customer.name}"></td>
+      <td th:text="${order.phone.name}"></td>
+      <td th:text="${order.employee.name}"></td>
+      <td>
+        <a th:href="@{/orders/{id}(id=${order.id})}">View</a>
+        <a th:href="@{/orders/delete/{id}(id=${order.id})}">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div>
+    <a th:href="@{/orders/new}">Create New Order</a>
+  </div>
+  <div class="pagination">
+    <span th:text="'Page: ' + ${orders.number + 1} + ' of ' + ${orders.totalPages}"></span>
+    <a th:href="@{/orders(page=0, size=${orders.size})}">First</a>
+    <a th:href="@{/orders(page=${orders.number - 1}, size=${orders.size})}" th:if="${orders.hasPrevious()}">Previous</a>
+    <a th:href="@{/orders(page=${orders.number + 1}, size=${orders.size})}" th:if="${orders.hasNext()}">Next</a>
+    <a th:href="@{/orders(page=${orders.totalPages - 1}, size=${orders.size})}">Last</a>
+  </div>
+  <button onclick="location.href='/home'">Back to Home</button>
 </div>
 </body>
 </html>

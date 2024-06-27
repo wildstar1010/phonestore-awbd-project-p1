@@ -2,39 +2,69 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Models</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      padding: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    a {
+      text-decoration: none;
+      color: blue;
+    }
+    .pagination {
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-<h1>Model List</h1>
-<table>
-  <thead>
-  <tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Brand</th>
-    <th>Actions</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr th:each="model : ${models.content}">
-    <td th:text="${model.id}"></td>
-    <td th:text="${model.name}"></td>
-    <td th:text="${model.brand.name}"></td>
-    <td>
-      <a th:href="@{/models/{id}(id=${model.id})}">View</a>
-      <a th:href="@{/models/delete/{id}(id=${model.id})}">Delete</a>
-    </td>
-  </tr>
-  </tbody>
-</table>
-<div>
-  <a th:href="@{/models/new}">Create New Model</a>
-</div>
-<div>
-  <span th:text="'Page: ' + ${models.number + 1} + ' of ' + ${models.totalPages}"></span>
-  <a th:href="@{/models(page=0, size=${models.size})}">First</a>
-  <a th:href="@{/models(page=${models.number - 1}, size=${models.size})}" th:if="${models.hasPrevious()}">Previous</a>
-  <a th:href="@{/models(page=${models.number + 1}, size=${models.size})}" th:if="${models.hasNext()}">Next</a>
-  <a th:href="@{/models(page=${models.totalPages - 1}, size=${models.size})}">Last</a>
+<div class="container">
+  <h1>Model List</h1>
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Brand</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="model : ${models.content}">
+      <td th:text="${model.id}"></td>
+      <td th:text="${model.name}"></td>
+      <td th:text="${model.brand.name}"></td>
+      <td>
+        <a th:href="@{/models/{id}(id=${model.id})}">View</a>
+        <a th:href="@{/models/delete/{id}(id=${model.id})}">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div>
+    <a th:href="@{/models/new}">Create New Model</a>
+  </div>
+  <div class="pagination">
+    <span th:text="'Page: ' + ${models.number + 1} + ' of ' + ${models.totalPages}"></span>
+    <a th:href="@{/models(page=0, size=${models.size})}">First</a>
+    <a th:href="@{/models(page=${models.number - 1}, size=${models.size})}" th:if="${models.hasPrevious()}">Previous</a>
+    <a th:href="@{/models(page=${models.number + 1}, size=${models.size})}" th:if="${models.hasNext()}">Next</a>
+    <a th:href="@{/models(page=${models.totalPages - 1}, size=${models.size})}">Last</a>
+  </div>
+  <button onclick="location.href='/home'">Back to Home</button>
 </div>
 </body>
 </html>

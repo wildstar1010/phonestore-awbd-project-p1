@@ -2,32 +2,62 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Create Phone</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      padding: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+    a {
+      display: block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: blue;
+    }
+  </style>
 </head>
 <body>
-<h1>Create Phone</h1>
-<form th:action="@{/phones}" th:object="${phone}" method="post">
-  <div>
-    <label for="name">Name:</label>
-    <input type="text" id="name" th:field="*{name}" required>
-  </div>
-  <div>
-    <label for="brand">Brand:</label>
-    <select id="brand" th:field="*{brand}" required>
-      <option th:each="brand : ${brands}" th:value="${brand}" th:text="${brand.name}"></option>
-    </select>
-  </div>
-  <div>
-    <label for="model">Model:</label>
-    <select id="model" th:field="*{model}" required>
-      <option th:each="model : ${models}" th:value="${model}" th:text="${model.name}"></option>
-    </select>
-  </div>
-  <div>
-    <button type="submit">Save</button>
-  </div>
-</form>
-<div>
+<div class="container">
+  <h1>Create Phone</h1>
+  <form th:action="@{/phones}" th:object="${phone}" method="post">
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" id="name" th:field="*{name}" required>
+    </div>
+    <div>
+      <label for="brand">Brand:</label>
+      <select id="brand" th:field="*{brand}" required>
+        <option th:each="brand : ${brands}" th:value="${brand.id}" th:text="${brand.name}"></option>
+      </select>
+    </div>
+    <div>
+      <label for="model">Model:</label>
+      <select id="model" th:field="*{model}" required>
+        <option th:each="model : ${models}" th:value="${model.id}" th:text="${model.name}"></option>
+      </select>
+    </div>
+    <div>
+      <button type="submit">Save</button>
+    </div>
+  </form>
   <a th:href="@{/phones}">Back to List</a>
+  <button onclick="location.href='/home'">Back to Home</button>
 </div>
 </body>
 </html>

@@ -1,26 +1,20 @@
--- Disable foreign key checks
-SET FOREIGN_KEY_CHECKS=0;
-
--- Drop all tables if they exist
-DROP TABLE IF EXISTS Accessory;
-DROP TABLE IF EXISTS Brand;
-DROP TABLE IF EXISTS Customer;
-DROP TABLE IF EXISTS Employee;
-DROP TABLE IF EXISTS Model;
+-- Debugging step to drop tables if they exist to ensure clean creation
 DROP TABLE IF EXISTS `Order`;
+DROP TABLE IF EXISTS Stock;
 DROP TABLE IF EXISTS Payment;
+DROP TABLE IF EXISTS Employee;
+DROP TABLE IF EXISTS Customer;
+DROP TABLE IF EXISTS Store;
 DROP TABLE IF EXISTS Phone;
+DROP TABLE IF EXISTS Model;
+DROP TABLE IF EXISTS Brand;
+DROP TABLE IF EXISTS Accessory;
 DROP TABLE IF EXISTS Rental;
 DROP TABLE IF EXISTS Repair;
 DROP TABLE IF EXISTS Review;
-DROP TABLE IF EXISTS Stock;
-DROP TABLE IF EXISTS Store;
 DROP TABLE IF EXISTS User;
 
--- Enable foreign key checks
-SET FOREIGN_KEY_CHECKS=1;
-
--- Create the tables again
+-- Creating tables in the correct order
 CREATE TABLE IF NOT EXISTS Brand (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL
@@ -71,6 +65,7 @@ CREATE TABLE IF NOT EXISTS Stock (
     FOREIGN KEY (store_id) REFERENCES Store(id)
 );
 
+-- Correct table creation order and case sensitivity check
 CREATE TABLE IF NOT EXISTS `Order` (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     customer_id BIGINT,
@@ -87,23 +82,17 @@ CREATE TABLE IF NOT EXISTS Accessory (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     phone_id BIGINT,
-    brand_id BIGINT,
-    FOREIGN KEY (phone_id) REFERENCES Phone(id),
-    FOREIGN KEY (brand_id) REFERENCES Brand(id)
+    FOREIGN KEY (phone_id) REFERENCES Phone(id)
 );
 
 CREATE TABLE IF NOT EXISTS Rental (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     customer_id BIGINT,
     phone_id BIGINT,
-    employee_id BIGINT,
     rental_date DATE,
     return_date DATE,
-    payment_id BIGINT,
     FOREIGN KEY (customer_id) REFERENCES Customer(id),
-    FOREIGN KEY (phone_id) REFERENCES Phone(id),
-    FOREIGN KEY (employee_id) REFERENCES Employee(id),
-    FOREIGN KEY (payment_id) REFERENCES Payment(id)
+    FOREIGN KEY (phone_id) REFERENCES Phone(id)
 );
 
 CREATE TABLE IF NOT EXISTS Repair (
@@ -111,9 +100,7 @@ CREATE TABLE IF NOT EXISTS Repair (
     phone_id BIGINT,
     repair_date DATE,
     description VARCHAR(255),
-    customer_id BIGINT, -- Added this line
-    FOREIGN KEY (phone_id) REFERENCES Phone(id),
-    FOREIGN KEY (customer_id) REFERENCES Customer(id) -- Added this line
+    FOREIGN KEY (phone_id) REFERENCES Phone(id)
 );
 
 CREATE TABLE IF NOT EXISTS Review (

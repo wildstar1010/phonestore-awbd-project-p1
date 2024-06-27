@@ -2,41 +2,71 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Phones</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      padding: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    a {
+      text-decoration: none;
+      color: blue;
+    }
+    .pagination {
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-<h1>Phone List</h1>
-<table>
-  <thead>
-  <tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Brand</th>
-    <th>Model</th>
-    <th>Actions</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr th:each="phone : ${phones.content}">
-    <td th:text="${phone.id}"></td>
-    <td th:text="${phone.name}"></td>
-    <td th:text="${phone.brand.name}"></td>
-    <td th:text="${phone.model.name}"></td>
-    <td>
-      <a th:href="@{/phones/{id}(id=${phone.id})}">View</a>
-      <a th:href="@{/phones/delete/{id}(id=${phone.id})}">Delete</a>
-    </td>
-  </tr>
-  </tbody>
-</table>
-<div>
-  <a th:href="@{/phones/new}">Create New Phone</a>
-</div>
-<div>
-  <span th:text="'Page: ' + ${phones.number + 1} + ' of ' + ${phones.totalPages}"></span>
-  <a th:href="@{/phones(page=0, size=${phones.size})}">First</a>
-  <a th:href="@{/phones(page=${phones.number - 1}, size=${phones.size})}" th:if="${phones.hasPrevious()}">Previous</a>
-  <a th:href="@{/phones(page=${phones.number + 1}, size=${phones.size})}" th:if="${phones.hasNext()}">Next</a>
-  <a th:href="@{/phones(page=${phones.totalPages - 1}, size=${phones.size})}">Last</a>
+<div class="container">
+  <h1>Phone List</h1>
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Brand</th>
+      <th>Model</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="phone : ${phones.content}">
+      <td th:text="${phone.id}"></td>
+      <td th:text="${phone.name}"></td>
+      <td th:text="${phone.brand.name}"></td>
+      <td th:text="${phone.model.name}"></td>
+      <td>
+        <a th:href="@{/phones/{id}(id=${phone.id})}">View</a>
+        <a th:href="@{/phones/delete/{id}(id=${phone.id})}">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div>
+    <a th:href="@{/phones/new}">Create New Phone</a>
+  </div>
+  <div class="pagination">
+    <span th:text="'Page: ' + ${phones.number + 1} + ' of ' + ${phones.totalPages}"></span>
+    <a th:href="@{/phones(page=0, size=${phones.size})}">First</a>
+    <a th:href="@{/phones(page=${phones.number - 1}, size=${phones.size})}" th:if="${phones.hasPrevious()}">Previous</a>
+    <a th:href="@{/phones(page=${phones.number + 1}, size=${phones.size})}" th:if="${phones.hasNext()}">Next</a>
+    <a th:href="@{/phones(page=${phones.totalPages - 1}, size=${phones.size})}">Last</a>
+  </div>
+  <button onclick="location.href='/home'">Back to Home</button>
 </div>
 </body>
 </html>

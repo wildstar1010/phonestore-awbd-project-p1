@@ -2,19 +2,40 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Brand Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      padding: 20px;
+    }
+    label {
+      font-weight: bold;
+    }
+    span {
+      margin-left: 10px;
+    }
+    a {
+      display: block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: blue;
+    }
+  </style>
 </head>
 <body>
-<h1>Brand Details</h1>
-<div>
-  <label>ID:</label>
-  <span th:text="${brand.id}"></span>
-</div>
-<div>
-  <label>Name:</label>
-  <span th:text="${brand.name}"></span>
-</div>
-<div>
+<div class="container">
+  <h1>Brand Details</h1>
+  <div>
+    <label>ID:</label>
+    <span th:text="${brand.id}"></span>
+  </div>
+  <div>
+    <label>Name:</label>
+    <span th:text="${brand.name}"></span>
+  </div>
   <a th:href="@{/brands}">Back to List</a>
+  <button onclick="location.href='/home'">Back to Home</button>
 </div>
 </body>
 </html>

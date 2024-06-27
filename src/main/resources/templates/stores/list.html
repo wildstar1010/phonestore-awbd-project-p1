@@ -1,29 +1,54 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Store List</title>
-  <link rel="stylesheet" th:href="@{/static/css/styles.css}">
+  <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            background-color: #f1f1f1;
+            padding: 20px;
+            text-align: center;
+        }
+        .content {
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
-<h1>Store List</h1>
-<table>
-  <thead>
-  <tr>
-    <th>ID</th>
-    <th>Name</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr th:each="store : ${stores.content}">
-    <td th:text="${store.id}">1</td>
-    <td th:text="${store.name}">Store Name</td>
-  </tr>
-  </tbody>
-</table>
-<div>
-  <a th:if="${stores.hasPrevious()}" th:href="@{${'/stores?page=' + ${stores.number - 1} + '&size=' + ${stores.size} + '&sort=' + ${stores.sort.property} + '&order=' + ${stores.sort.direction}}}">Previous</a>
-  <span th:text="${stores.number + 1}"></span> / <span th:text="${stores.totalPages}"></span>
-  <a th:if="${stores.hasNext()}" th:href="@{${'/stores?page=' + ${stores.number + 1} + '&size=' + ${stores.size} + '&sort=' + ${stores.sort.property} + '&order=' + ${stores.sort.direction}}}">Next</a>
+<div class="header">
+  <img src="/images/logo.png" alt="Logo">
+</div>
+<div class="content">
+  <table>
+    <thead>
+    <tr>
+      <th><a th:href="@{/stores(sort='id', direction=${stores.sort.ascending} ? 'asc' : 'desc')}">ID</a></th>
+      <th><a th:href="@{/stores(sort='name', direction=${stores.sort.ascending} ? 'asc' : 'desc')}">Name</a></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="store : ${stores.content}">
+      <td th:text="${store.id}">1</td>
+      <td th:text="${store.name}">Store Name</td>
+    </tr>
+    </tbody>
+  </table>
+  <button onclick="location.href='/home'">Back to Home</button>
 </div>
 </body>
 </html>
